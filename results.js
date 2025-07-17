@@ -55,7 +55,7 @@ async function loadTodayMatches(isRefresh = false) {
   
   try {
     // Get all matches
-    const response = await fetch('http://localhost:3000/api/all-matches');
+    const response = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/all-matches`);
     if (!response.ok) {
       throw new Error('Failed to fetch matches');
     }
@@ -185,7 +185,7 @@ async function searchTickets(username, ticketId) {
     // Try to find by ticket ID first
     if (ticketId) {
       try {
-        const ticketResponse = await fetch(`http://localhost:3000/api/ticket/${ticketId}`);
+        const ticketResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/ticket/${ticketId}`);
         if (ticketResponse.ok) {
           ticket = await ticketResponse.json();
           username = ticket.username; // Set username for match lookup
@@ -198,11 +198,11 @@ async function searchTickets(username, ticketId) {
     // If no ticket found and username provided, try to find by username
     if (!ticket && username) {
       try {
-        const userResponse = await fetch(`http://localhost:3000/api/user-predictions/${username}`);
+        const userResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/user-predictions/${username}`);
         if (userResponse.ok) {
           const user = await userResponse.json();
           if (user && user.ticketId) {
-            const ticketResponse = await fetch(`http://localhost:3000/api/ticket/${user.ticketId}`);
+            const ticketResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/ticket/${user.ticketId}`);
             if (ticketResponse.ok) {
               ticket = await ticketResponse.json();
             }
@@ -226,7 +226,7 @@ async function searchTickets(username, ticketId) {
     
     // Get match details for each prediction
     const matchPromises = ticket.predictions.map(pred => 
-      fetch(`http://localhost:3000/api/results/${pred.matchId}`)
+      fetch(`${window.APP_CONFIG.API_BASE_URL}/api/results/${pred.matchId}`)
         .then(res => res.ok ? res.json() : null)
         .catch(() => null)
     );
@@ -265,7 +265,7 @@ async function loadRecentResults(isRefresh = false) {
   
   try {
     // Get all tickets
-    const response = await fetch('http://localhost:3000/api/all-tickets');
+    const response = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/all-tickets`);
     if (!response.ok) {
       throw new Error('Failed to fetch tickets');
     }
@@ -361,7 +361,7 @@ async function loadWinners(isRefresh = false) {
   
   try {
     // Get all tickets
-    const response = await fetch('http://localhost:3000/api/all-tickets');
+    const response = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/all-tickets`);
     if (!response.ok) {
       throw new Error('Failed to fetch tickets');
     }
