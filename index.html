@@ -387,28 +387,12 @@
 
         <div class="row align-items-center">
           <div class="col-lg-8 col-md-12">
-            <!-- Desktop Layout -->
-            <div class="input-group d-none d-md-flex">
+            <!-- Username Input Only -->
+            <div class="input-group">
               <span class="input-group-text" style="background: var(--white); border-color: var(--neutral-300);">
                 <i class="bi bi-person-fill text-primary"></i>
               </span>
               <input type="text" id="username" placeholder="Enter your username" class="form-control">
-              <button id="submitPrediction" class="btn-gaming pulse-animation" disabled>
-                <i class="bi bi-send me-1"></i> Submit Prediction
-              </button>
-            </div>
-            
-            <!-- Mobile Layout -->
-            <div class="d-md-none mobile-prediction-form">
-              <div class="input-group mb-3">
-                <span class="input-group-text" style="background: var(--white); border-color: var(--neutral-300);">
-                  <i class="bi bi-person-fill text-primary"></i>
-                </span>
-                <input type="text" id="usernameMobile" placeholder="Enter your username" class="form-control">
-              </div>
-              <button id="submitPredictionMobile" class="btn-gaming pulse-animation w-100" disabled>
-                <i class="bi bi-send me-1"></i> Submit Prediction
-              </button>
             </div>
           </div>
           <div class="col-lg-4 col-md-12 mt-3 mt-lg-0">
@@ -492,11 +476,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       syncInputs('username', 'usernameMobile');
       syncInputs('usernameMobile', 'username');
-      
+
       // Add event listeners for both submit buttons
       const desktopBtn = document.getElementById('submitPrediction');
       const mobileBtn = document.getElementById('submitPredictionMobile');
-      
+
       if (desktopBtn) {
         desktopBtn.addEventListener('click', handleSubmitPrediction);
       }
@@ -508,16 +492,13 @@
     // Check user status when username is entered
     document.getElementById('username').addEventListener('input', async (e) => {
       const username = e.target.value;
-      document.getElementById('submitPrediction').disabled = !username;
-      if (document.getElementById('submitPredictionMobile')) {
-        document.getElementById('submitPredictionMobile').disabled = !username;
-      }
+      // Note: Submit button is now at the bottom of matches, will be handled by updateSelectedCount
 
       if (username) {
         // Sync with mobile input
         const mobileInput = document.getElementById('usernameMobile');
         if (mobileInput) mobileInput.value = username;
-        
+
         // Check if user already exists
         try {
           const userResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/user-predictions/${username}`);
@@ -570,7 +551,7 @@
           const username = e.target.value;
           const desktopInput = document.getElementById('username');
           if (desktopInput) desktopInput.value = username;
-          
+
           document.getElementById('submitPrediction').disabled = !username;
           if (document.getElementById('submitPredictionMobile')) {
             document.getElementById('submitPredictionMobile').disabled = !username;
@@ -656,10 +637,10 @@
         if (response.ok) {
           const result = await response.json();
           alert(t('predictionSubmitted') + '\n' + t('ticketId') + ': ' + result.ticketId);
-          
+
           // Show ticket info
           document.getElementById('viewTicketBtn').style.display = 'inline-block';
-          
+
           // Disable further submissions
           document.getElementById('submitPrediction').disabled = true;
           if (document.getElementById('submitPredictionMobile')) {
@@ -829,8 +810,6 @@
         return;
       }
 
-      // First display all matches, then add tips at the bottom
-
       // Group matches by league/sportKey for better organization
       const matchesByLeague = {};
       matches.forEach(match => {
@@ -856,141 +835,86 @@
           div.dataset.matchId = match.matchId;
           div.dataset.sportKey = match.sportKey;
 
-          // Calculate odds display - if odds are available
-          const oddsADisplay = match.oddsA ? `${match.oddsA.toFixed(2)}` : '';
-          const oddsBDisplay = match.oddsB ? `${match.oddsB.toFixed(2)}` : '';
-          const drawOddsDisplay = match.drawOdds ? `${match.drawOdds.toFixed(2)}` : '';
-
           // Determine which team is favored (has lower odds)
           const teamAFavored = match.oddsA && match.oddsB && match.oddsA < match.oddsB;
           const teamBFavored = match.oddsA && match.oddsB && match.oddsB < match.oddsA;
 
           div.innerHTML = `
-              <h3 class="match-title">
-                <span class="home-team">${match.teamA}</span>
-                <span class="team-label">(Home)</span>
-                <span class="vs-text">vs</span>
-                <span class="away-team">${match.teamB}</span>
-                <span class="team-label">(Away)</span>
-              </h3>
-              <input type="hidden" value="${match.matchId}">
-              
-              <div class="team-select-container">
-                <button type="button" class="btn btn-outline-primary team-select ${teamAFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamA" data-team-name="${match.teamA}">
-                  <span class="team-name ${teamAFavored ? 'favored' : ''}">${match.teamA}</span>
-                  ${match.oddsA ? `<span class="odds">${match.oddsA.toFixed(2)}</span>` : ''}
-                </button>
-                <button type="button" class="btn btn-outline-secondary team-select draw-select" data-match-id="${match.matchId}" data-team="draw" data-team-name="Draw">
-                  <span class="team-name">Draw</span>
-                  ${match.drawOdds ? `<span class="odds">${match.drawOdds.toFixed(2)}</span>` : ''}
-                </button>
-                <button type="button" class="btn btn-outline-primary team-select ${teamBFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamB" data-team-name="${match.teamB}">
-                  <span class="team-name ${teamBFavored ? 'favored' : ''}">${match.teamB}</span>
-                  ${match.oddsB ? `<span class="odds">${match.oddsB.toFixed(2)}</span>` : ''}
-                </button>
-              </div>
-              
-              <div class="selected-team-display" id="selected_${match.matchId}" style="display: none;">
-                <div class="alert alert-success mb-0">
-                  Your prediction: <span class="selected-team-name"></span>
-                </div>
+            <h3 class="match-title">
+              <span class="home-team">${match.teamA}</span>
+              <span class="team-label">(Home)</span>
+              <span class="vs-text">vs</span>
+              <span class="away-team">${match.teamB}</span>
+              <span class="team-label">(Away)</span>
+            </h3>
+            <input type="hidden" value="${match.matchId}">
+            
+            <div class="team-select-container">
+              <button type="button" class="btn btn-outline-primary team-select ${teamAFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamA" data-team-name="${match.teamA}">
+                <span class="team-name ${teamAFavored ? 'favored' : ''}">${match.teamA}</span>
+                ${match.oddsA ? `<span class="odds">${match.oddsA.toFixed(2)}</span>` : ''}
+              </button>
+              <button type="button" class="btn btn-outline-secondary team-select draw-select" data-match-id="${match.matchId}" data-team="draw" data-team-name="Draw">
+                <span class="team-name">Draw</span>
+                ${match.drawOdds ? `<span class="odds">${match.drawOdds.toFixed(2)}</span>` : ''}
+              </button>
+              <button type="button" class="btn btn-outline-primary team-select ${teamBFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamB" data-team-name="${match.teamB}">
+                <span class="team-name ${teamBFavored ? 'favored' : ''}">${match.teamB}</span>
+                ${match.oddsB ? `<span class="odds">${match.oddsB.toFixed(2)}</span>` : ''}
+              </button>
+            </div>
+            
+            <div class="selected-team-display" id="selected_${match.matchId}" style="display: none;">
+              <div class="alert alert-success mb-0">
+                Your prediction: <span class="selected-team-name"></span>
               </div>
             </div>
           `;
+
           leagueDiv.appendChild(div);
         });
       });
 
-      // Add pro tips section at the bottom
-      const tipsDiv = document.createElement('div');
-      tipsDiv.className = 'mt-5 mb-4';
-      tipsDiv.innerHTML = `
-        <div class="prediction-tips">
-          <div class="text-center mb-4">
-            <h4 style="color: var(--neutral-800); font-weight: 600; margin-bottom: 0.5rem;">
-              <i class="bi bi-lightbulb me-2 text-primary"></i>Prediction Tips
-            </h4>
-            <p style="color: var(--neutral-600); margin: 0;">Learn the strategies to make better predictions</p>
+      // Add submit button section at the bottom of matches
+      const submitSection = document.createElement('div');
+      submitSection.className = 'submit-section mt-4 p-4';
+      submitSection.innerHTML = `
+        <div class="text-center">
+          <div class="alert alert-info mb-3">
+            <strong>${t('selected')}:</strong> <span id="selectedCount">0</span>/4 ${t('required')}
           </div>
-          
-          <div class="row">
-            <div class="col-md-3">
-              <div class="tip-card">
-                <i class="bi bi-lightbulb-fill text-warning"></i>
-                <h6>Understanding Odds</h6>
-                <p>Lower odds mean higher chance of winning</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="tip-card">
-                <i class="bi bi-house-fill text-success"></i>
-                <h6>Home Advantage</h6>
-                <p>Home teams typically perform 10-15% better</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="tip-card">
-                <i class="bi bi-graph-up text-primary"></i>
-                <h6>Smart Strategy</h6>
-                <p>Balance safe bets with higher-risk picks</p>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="tip-card">
-                <i class="bi bi-trophy-fill text-danger"></i>
-                <h6>Requirement</h6>
-                <p>Select exactly 4 matches to submit</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="row mt-4">
-            <div class="col-12">
-              <div class="info-banner">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-info-circle-fill text-primary me-3"></i>
-                  <div>
-                    <h6 class="mb-1">How to Read the Interface</h6>
-                    <p class="mb-0">Teams in <strong style="color: var(--primary-blue);">blue</strong> are favorites (lower odds, higher win chance). Green numbers show the betting odds.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <button id="submitPrediction" class="btn-gaming pulse-animation btn-lg" disabled>
+            <i class="bi bi-send me-2"></i> ${t('submitPrediction')}
+          </button>
+          <div class="mt-2">
+            <small class="text-muted">${t('selectTeamsAlert')}</small>
           </div>
         </div>
       `;
-      matchesDiv.appendChild(tipsDiv);
+      matchesDiv.appendChild(submitSection);
 
-      // Add event listeners for team selection buttons
+      // Add event listener to the new submit button
+      const submitBtn = document.getElementById('submitPrediction');
+      if (submitBtn) {
+        submitBtn.addEventListener('click', handleSubmitPrediction);
+      }
+
+      // Add team selection event listeners
       document.querySelectorAll('.team-select').forEach(button => {
-        button.addEventListener('click', function () {
-          const matchId = this.dataset.matchId;
-          const team = this.dataset.team;
-          const teamName = this.dataset.teamName;
+        button.addEventListener('click', (e) => {
+          const matchId = e.currentTarget.dataset.matchId;
+          const team = e.currentTarget.dataset.team;
+          const teamName = e.currentTarget.dataset.teamName;
 
           // Remove active class from all buttons in this match
-          document.querySelectorAll(`.team-select[data-match-id="${matchId}"]`).forEach(btn => {
+          document.querySelectorAll(`[data-match-id="${matchId}"]`).forEach(btn => {
             btn.classList.remove('active');
-            btn.classList.remove('btn-primary', 'btn-secondary');
-
-            if (btn.dataset.team === 'teamA' || btn.dataset.team === 'teamB') {
-              btn.classList.add('btn-outline-primary');
-            } else {
-              btn.classList.add('btn-outline-secondary');
-            }
           });
 
-          // Add active class to selected button
-          this.classList.add('active');
-          this.classList.remove('btn-outline-primary', 'btn-outline-secondary');
+          // Add active class to clicked button
+          e.currentTarget.classList.add('active');
 
-          if (team === 'teamA' || team === 'teamB') {
-            this.classList.add('btn-primary');
-          } else {
-            this.classList.add('btn-secondary');
-          }
-
-          // Show selected team display
+          // Show selected team
           const selectedDisplay = document.getElementById(`selected_${matchId}`);
           selectedDisplay.style.display = 'block';
           selectedDisplay.querySelector('.selected-team-name').textContent = teamName;
@@ -1021,334 +945,25 @@
         countElement.textContent = selectedCount;
       }
 
-      // Enable or disable submit button based on selection count
+      // Enable or disable submit button based on selection count (minimum 4 required)
       const submitButton = document.getElementById('submitPrediction');
       if (submitButton) {
-        submitButton.disabled = selectedCount < 4 || !document.getElementById('username').value;
-      }
-    }
+        const username = document.getElementById('username').value;
+        submitButton.disabled = selectedCount < 4 || !username;
 
-    document.getElementById('submitPrediction').addEventListener('click', async () => {
-      const username = document.getElementById('username').value;
-      if (!username) {
-        alert('Please enter a username');
-        return;
-      }
-
-      // Check if user already exists
-      try {
-        const checkUserResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/user-predictions/${username}`);
-        if (checkUserResponse.ok) {
-          const userData = await checkUserResponse.json();
-          if (userData && userData.predictions && userData.predictions.length > 0) {
-            alert('This username has already submitted predictions. Please use a different username or contact admin to reset.');
-            return;
-          }
-        }
-      } catch (error) {
-        // User doesn't exist, can proceed
-      }
-
-      // Get all selected predictions
-      const predictionElements = document.querySelectorAll('.match-prediction');
-      if (predictionElements.length === 0) {
-        alert('No predictions made. Please select at least 4 teams.');
-        return;
-      }
-
-      if (predictionElements.length < 4) {
-        alert('Please select at least 4 teams to submit your prediction.');
-        return;
-      }
-
-      const predictions = [];
-
-      predictionElements.forEach((element) => {
-        const matchId = element.id.replace('prediction_', '');
-        const selectedTeam = element.value; // teamA, teamB, or draw
-
-        // For API compatibility, we need to set guessA and guessB values
-        // that correspond to the selected team
-        let guessA = 0;
-        let guessB = 0;
-
-        if (selectedTeam === 'teamA') {
-          guessA = 1;
-          guessB = 0;
-        } else if (selectedTeam === 'teamB') {
-          guessA = 0;
-          guessB = 1;
+        // Update button text based on selection count
+        const icon = submitButton.querySelector('i');
+        if (selectedCount >= 4 && username) {
+          submitButton.innerHTML = `${icon ? icon.outerHTML : ''} ${t('submitPrediction')} (${selectedCount} ${t('selected')})`;
+          submitButton.classList.add('pulse-animation');
         } else {
-          // Draw
-          guessA = 1;
-          guessB = 1;
+          submitButton.innerHTML = `${icon ? icon.outerHTML : ''} ${t('submitPrediction')} (${selectedCount}/4)`;
+          submitButton.classList.remove('pulse-animation');
         }
-
-        predictions.push({ matchId, selectedTeam, guessA, guessB });
-      });
-
-      try {
-        document.getElementById('ticketInfo').innerHTML = `
-          <div class="alert alert-info">
-            <h5>Submitting your prediction...</h5>
-            <p>Please wait...</p>
-          </div>
-        `;
-
-        const predictResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/predict`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, predictions })
-        });
-
-        if (predictResponse.ok) {
-          const data = await predictResponse.json();
-
-          // Create a summary of the predictions
-          let predictionSummary = '<h6>Your Predictions:</h6><ul>';
-          predictions.forEach(pred => {
-            const matchCard = document.querySelector(`[data-match-id="${pred.matchId}"]`);
-            const teamA = matchCard.querySelector('[data-team="teamA"]').dataset.teamName;
-            const teamB = matchCard.querySelector('[data-team="teamB"]').dataset.teamName;
-            const selectedTeamName = matchCard.querySelector(`[data-team="${pred.selectedTeam}"]`).dataset.teamName;
-
-            predictionSummary += `<li>${teamA} vs ${teamB}: You predicted <strong>${selectedTeamName}</strong></li>`;
-          });
-          predictionSummary += '</ul>';
-
-          document.getElementById('ticketInfo').innerHTML = `
-            <div class="alert alert-success">
-              <h5>Prediction Submitted Successfully!</h5>
-              <p><strong>Ticket ID:</strong> ${data.ticketId}</p>
-              <p>${data.message}</p>
-              ${predictionSummary}
-            </div>
-          `;
-          // Disable the submit button after successful submission
-          document.getElementById('submitPrediction').disabled = true;
-        } else {
-          const errorData = await predictResponse.json();
-          document.getElementById('ticketInfo').innerHTML = `
-            <div class="alert alert-danger">
-              <h5>Prediction Failed!</h5>
-              <p>${errorData.message || 'Unknown error occurred'}</p>
-            </div>
-          `;
-        }
-      } catch (error) {
-        console.error('Error submitting prediction:', error);
-        document.getElementById('ticketInfo').innerHTML = `
-          <div class="alert alert-danger">
-            <h5>Prediction Failed!</h5>
-            <p>An error occurred while submitting your prediction. Please try again.</p>
-          </div>
-        `;
       }
-    });
-
-
-    // Modal functionality
-    const ticketModal = document.getElementById('ticketModal');
-    const closeModal = document.getElementById('closeModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const viewTicketBtn = document.getElementById('viewTicketBtn');
-
-    // Close modal when clicking the X or Close button
-    closeModal.addEventListener('click', () => {
-      ticketModal.style.display = 'none';
-    });
-
-    closeModalBtn.addEventListener('click', () => {
-      ticketModal.style.display = 'none';
-    });
-
-    // Close modal when clicking outside of it
-    window.addEventListener('click', (event) => {
-      if (event.target === ticketModal) {
-        ticketModal.style.display = 'none';
-      }
-    });
-
-    // Function to show ticket in modal
-    function showTicketModal(ticket, username) {
-      // Determine status class
-      let statusClass = 'status-pending';
-      if (ticket.status === 'win') {
-        statusClass = 'status-win';
-        createConfetti();
-      } else if (ticket.status === 'lose') {
-        statusClass = 'status-lose';
-      }
-
-      // Create ticket content
-      let modalContent = `
-        <div class="mb-4">
-          <h5 class="mb-3">Ticket Information</h5>
-          <div class="row mb-3">
-            <div class="col-md-4">
-              <strong>Username:</strong>
-            </div>
-            <div class="col-md-8">
-              ${username}
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-md-4">
-              <strong>Ticket ID:</strong>
-            </div>
-            <div class="col-md-8">
-              <span class="ticket-id">${ticket.ticketId}</span>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-md-4">
-              <strong>Status:</strong>
-            </div>
-            <div class="col-md-8">
-              <span class="prediction-status ${statusClass}">${ticket.status || 'pending'}</span>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-md-4">
-              <strong>Created:</strong>
-            </div>
-            <div class="col-md-8">
-              ${new Date(ticket.createdAt).toLocaleString()}
-            </div>
-          </div>
-        </div>
-        
-        <h5 class="mb-3">Your Predictions</h5>
-      `;
-
-      // Add predictions
-      ticket.predictions.forEach((pred, index) => {
-        modalContent += `
-          <div class="prediction-item">
-            <div class="row">
-              <div class="col-md-8">
-                <strong>Match ${index + 1}:</strong> ${pred.matchId}
-              </div>
-              <div class="col-md-4 text-end">
-                <span class="badge bg-primary">${pred.selectedTeam}</span>
-              </div>
-            </div>
-            <div class="small text-muted mt-1">
-              Prediction: ${pred.selectedTeam === 'teamA' ? 'Home Win' : pred.selectedTeam === 'teamB' ? 'Away Win' : 'Draw'}
-              (${pred.guessA}-${pred.guessB})
-            </div>
-          </div>
-        `;
-      });
-
-      // Set modal content and show
-      document.getElementById('ticketModalContent').innerHTML = modalContent;
-      ticketModal.style.display = 'block';
     }
-
-    // Create confetti animation for winning tickets
-    function createConfetti() {
-      const confettiContainer = document.getElementById('confettiContainer');
-      confettiContainer.innerHTML = '';
-
-      const colors = ['#1a73e8', '#fbbc05', '#34a853', '#ea4335', '#4285f4'];
-
-      for (let i = 0; i < 100; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDelay = Math.random() * 5 + 's';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = Math.random() * 10 + 5 + 'px';
-        confetti.style.height = Math.random() * 10 + 5 + 'px';
-        confettiContainer.appendChild(confetti);
-      }
-
-      // Remove confetti after animation
-      setTimeout(() => {
-        confettiContainer.innerHTML = '';
-      }, 10000);
-    }
-
-    // Check ticket status periodically
-    setInterval(async () => {
-      const username = document.getElementById('username').value;
-      if (username) {
-        try {
-          const userResponse = await fetch(`http://localhost:3000/api/user-predictions/${username}`);
-          if (userResponse.ok) {
-            const user = await userResponse.json();
-            if (user && user.ticketId) {
-              // Show view ticket button
-              viewTicketBtn.style.display = 'block';
-
-              const ticketResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/ticket/${user.ticketId}`);
-              if (ticketResponse.ok) {
-                const ticket = await ticketResponse.json();
-
-                // Store ticket data for modal
-                viewTicketBtn.dataset.ticketData = JSON.stringify(ticket);
-                viewTicketBtn.dataset.username = username;
-
-                // Add click event to view ticket button
-                viewTicketBtn.onclick = function () {
-                  const ticketData = JSON.parse(this.dataset.ticketData);
-                  const username = this.dataset.username;
-                  showTicketModal(ticketData, username);
-                };
-
-                if (ticket.status) {
-                  // Determine status class for the alert
-                  let statusClass = 'alert-info';
-                  if (ticket.status === 'win') {
-                    statusClass = 'alert-success';
-                  } else if (ticket.status === 'lose') {
-                    statusClass = 'alert-danger';
-                  }
-
-                  let ticketHtml = `
-                    <div class="card shadow animate-fadeIn">
-                      <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="bi bi-ticket-perforated-fill me-2"></i>Your Prediction Status</h5>
-                      </div>
-                      <div class="card-body">
-                        <div class="row mb-3">
-                          <div class="col-md-4">
-                            <strong>Ticket ID:</strong>
-                          </div>
-                          <div class="col-md-8">
-                            <span class="ticket-id">${ticket.ticketId}</span>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                          <div class="col-md-4">
-                            <strong>Status:</strong>
-                          </div>
-                          <div class="col-md-8">
-                            <span class="prediction-status ${ticket.status === 'win' ? 'status-win' : ticket.status === 'lose' ? 'status-lose' : 'status-pending'}">
-                              ${ticket.status}
-                            </span>
-                          </div>
-                        </div>
-                        <div class="mt-3">
-                          <button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('viewTicketBtn').click()">
-                            <i class="bi bi-eye-fill me-1"></i> View Full Ticket Details
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  `;
-                  document.getElementById('ticketInfo').innerHTML = ticketHtml;
-                }
-              }
-            }
-          }
-        } catch (error) {
-          console.error('Error checking ticket status:', error);
-        }
-      }
-    }, 5000);
   </script>
 </body>
 
 </html>
+
