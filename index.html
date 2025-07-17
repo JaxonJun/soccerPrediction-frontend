@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
         results: "Results",
         enterUsername: "Enter your username",
         submitPrediction: "Submit Prediction",
-        playersOnline: "Players Online",
+        playersPredict: "Players Predict",
         makeYourPredictions: "Make Your Predictions:",
         filterMatches: "Filter Matches",
         searchByTeam: "Search by team name",
@@ -23,12 +24,35 @@
         clear: "Clear",
         selected: "Selected",
         required: "required",
+        home: "Home",
+        away: "Away",
+        draw: "Draw",
+        odds: "Odds",
+        yourPrediction: "Your prediction",
+        predictionTips: "Prediction Tips",
+        learnStrategies: "Learn the strategies to make better predictions",
+        understandingOdds: "Understanding Odds",
+        understandingOddsDesc: "Lower odds mean higher chance of winning",
+        homeAdvantage: "Home Advantage",
+        homeAdvantageDesc: "Home teams typically perform 10-15% better",
+        smartStrategy: "Smart Strategy",
+        smartStrategyDesc: "Balance safe bets with higher-risk picks",
+        requirement: "Requirement",
+        requirementDesc: "Select exactly 4 matches to submit",
+        howToRead: "How to Read the Interface",
+        howToReadDesc: "Teams in blue are favorites (lower odds, higher win chance). Green numbers show the betting odds.",
+        noMatches: "No matches available for prediction at this time.",
+        noMatchesFound: "No matches found with current filters.",
+        submittingPrediction: "Submitting your prediction...",
+        pleaseWait: "Please wait...",
+        predictionSubmitted: "Prediction Submitted Successfully!",
+        ticketId: "Ticket ID",
+        yourPredictions: "Your Predictions",
+        predictionFailed: "Prediction Failed!",
         enterUsernameAlert: "Please enter a username",
         selectTeamsAlert: "Please select at least 4 teams to submit your prediction.",
         usernameExists: "This username has already submitted predictions. Please use a different username or contact admin to reset.",
-        predictionSubmitted: "Prediction Submitted Successfully!",
-        predictionFailed: "Prediction Failed!",
-        ticketId: "Ticket ID"
+        vs: "vs"
       },
       my: {
         title: "ခန့်မှန်းပွဲစတင်ပါပြီ",
@@ -46,12 +70,35 @@
         clear: "ရှင်းလင်းပါ",
         selected: "ရွေးချယ်ပြီး",
         required: "လိုအပ်သည်",
+        home: "အိမ်ရှင်",
+        away: "ဧည့်သည်",
+        draw: "သရေရ",
+        odds: "အခွင့်အလမ်း",
+        yourPrediction: "သင့်ခန့်မှန်းချက်",
+        predictionTips: "ခန့်မှန်းချက်အကြံပြုချက်များ",
+        learnStrategies: "ပိုမိုကောင်းမွန်သော ခန့်မှန်းချက်များအတွက် နည်းဗျူဟာများကို လေ့လာပါ",
+        understandingOdds: "အခွင့်အလမ်းနားလည်ခြင်း",
+        understandingOddsDesc: "နည်းသော အခွင့်အလမ်းသည် အနိုင်ရခြေ ပိုများသည်",
+        homeAdvantage: "အိမ်ရှင်အားသာချက်",
+        homeAdvantageDesc: "အိမ်ရှင်အသင်းများသည် ပုံမှန်အားဖြင့် ၁၀-၁၅% ပိုကောင်းသည်",
+        smartStrategy: "လိမ္မာသောနည်းဗျူဟာ",
+        smartStrategyDesc: "ဘေးကင်းသော လောင်းကြေးများနှင့် မြင့်မားသော အန္တရာယ်ရှိသော ရွေးချယ်မှုများကို ဟန်ချက်ညီအောင်လုပ်ပါ",
+        requirement: "လိုအပ်ချက်",
+        requirementDesc: "ပို့ရန် ပွဲ ၄ ပွဲကို အတိအကျ ရွေးချယ်ပါ",
+        howToRead: "အင်တာဖေ့စ်ကို ဖတ်နည်း",
+        howToReadDesc: "အပြာရောင်ရှိသော အသင်းများသည် အနိုင်ရနိုင်ခြေ များသော အသင်းများဖြစ်သည် (နည်းသော အခွင့်အလမ်း၊ မြင့်သော အနိုင်ရခြေ)။ အစိမ်းရောင်ဂဏန်းများသည် လောင်းကြေး အခွင့်အလမ်းများကို ပြသသည်။",
+        noMatches: "လောလောဆယ် ခန့်မှန်းရန်အတွက် ပွဲများမရှိပါ။",
+        noMatchesFound: "လက်ရှိစစ်ထုတ်မှုများဖြင့် ပွဲများမတွေ့ပါ။",
+        submittingPrediction: "သင့်ခန့်မှန်းချက်ကို ပို့နေသည်...",
+        pleaseWait: "ကျေးဇူးပြု၍ စောင့်ပါ...",
+        predictionSubmitted: "ခန့်မှန်းချက် အောင်မြင်စွာ ပို့ပြီးပါပြီ!",
+        ticketId: "လက်မှတ်နံပါတ်",
+        yourPredictions: "သင့်ခန့်မှန်းချက်များ",
+        predictionFailed: "ခန့်မှန်းချက် မအောင်မြင်ပါ!",
         enterUsernameAlert: "ကျေးဇူးပြု၍ အမည်ရိုက်ထည့်ပါ",
         selectTeamsAlert: "ကျေးဇူးပြု၍ သင့်ခန့်မှန်းချက်ပို့ရန် အသင်း ၄ သင်းကို ရွေးချယ်ပါ။",
         usernameExists: "ဤအမည်ဖြင့် ခန့်မှန်းချက်များ ပို့ပြီးပါပြီ။ ကျေးဇူးပြု၍ အခြားအမည်ကို အသုံးပြုပါ သို့မဟုတ် ပြန်လည်သတ်မှတ်ရန် admin နှင့်ဆက်သွယ်ပါ။",
-        predictionSubmitted: "ခန့်မှန်းချက် အောင်မြင်စွာ ပို့ပြီးပါပြီ!",
-        predictionFailed: "ခန့်မှန်းချက် မအောင်မြင်ပါ!",
-        ticketId: "လက်မှတ်နံပါတ်"
+        vs: "နှင့်"
       }
     };
 
@@ -65,31 +112,46 @@
 
     // Update page content
     function updateLanguage() {
+      // Update title and meta
       document.title = t('title');
-      
+
+      // Update header
       const titleElement = document.querySelector('.title-text');
       if (titleElement) titleElement.textContent = t('title');
 
       const subtitleElement = document.querySelector('.page-subtitle');
       if (subtitleElement) subtitleElement.textContent = t('subtitle');
 
+      // Update main content
       updateMainContent();
+
+      // Update matches if they exist
+      updateMatchesLanguage();
+
+      // Save language preference
       localStorage.setItem('language', currentLang);
     }
 
     function updateMainContent() {
+      // Update static text elements
       const elements = {
         '.card-title': 'makeYourPrediction',
         '[href="results.html"]': 'results',
         '#username': 'enterUsername',
-        '.stat-card small': 'playersOnline'
+        '#usernameMobile': 'enterUsername',
+        '#submitPrediction': 'submitPrediction',
+        '#submitPredictionMobile': 'submitPrediction',
+        '.stat-card small': 'playersPredi'
       };
 
       Object.entries(elements).forEach(([selector, key]) => {
         const element = document.querySelector(selector);
         if (element) {
-          if (selector === '#username') {
+          if (selector === '#username' || selector === '#usernameMobile') {
             element.placeholder = t(key);
+          } else if (selector === '#submitPrediction' || selector === '#submitPredictionMobile') {
+            const icon = element.querySelector('i');
+            element.innerHTML = `${icon ? icon.outerHTML : ''} ${t(key)}`;
           } else if (selector === '[href="results.html"]') {
             const icon = element.querySelector('i');
             element.innerHTML = `${icon ? icon.outerHTML : ''} ${t(key)}`;
@@ -100,11 +162,80 @@
       });
     }
 
+    function updateMatchesLanguage() {
+      // Update filter section
+      const filterTitle = document.querySelector('h5');
+      if (filterTitle && filterTitle.textContent.includes('Filter')) {
+        filterTitle.innerHTML = `<i class="bi bi-funnel-fill me-2"></i>${t('filterMatches')}`;
+      }
+
+      // Update form elements
+      const teamFilter = document.getElementById('filterTeam');
+      if (teamFilter) teamFilter.placeholder = t('searchByTeam');
+
+      const allLeaguesOption = document.querySelector('option[value=""]');
+      if (allLeaguesOption) allLeaguesOption.textContent = t('allLeagues');
+
+      const searchBtn = document.getElementById('applyFilter');
+      if (searchBtn) searchBtn.textContent = t('search');
+
+      const clearBtn = document.getElementById('clearFilter');
+      if (clearBtn) clearBtn.textContent = t('clear');
+
+      // Update selected count
+      const selectedText = document.querySelector('.alert-info p');
+      if (selectedText) {
+        const count = document.getElementById('selectedCount');
+        const countValue = count ? count.textContent : '0';
+        selectedText.innerHTML = `<strong>${t('selected')}:</strong> <span id="selectedCount">${countValue}</span>/4 ${t('required')}`;
+      }
+
+      // Update tips section
+      updateTipsSection();
+    }
+
+    function updateTipsSection() {
+      const tipsTitle = document.querySelector('.prediction-tips h4');
+      if (tipsTitle) {
+        tipsTitle.innerHTML = `<i class="bi bi-lightbulb me-2 text-primary"></i>${t('predictionTips')}`;
+      }
+
+      const tipsSubtitle = document.querySelector('.prediction-tips p');
+      if (tipsSubtitle) {
+        tipsSubtitle.textContent = t('learnStrategies');
+      }
+
+      // Update tip cards
+      const tipCards = document.querySelectorAll('.tip-card');
+      const tipKeys = [
+        { title: 'understandingOdds', desc: 'understandingOddsDesc' },
+        { title: 'homeAdvantage', desc: 'homeAdvantageDesc' },
+        { title: 'smartStrategy', desc: 'smartStrategyDesc' },
+        { title: 'requirement', desc: 'requirementDesc' }
+      ];
+
+      tipCards.forEach((card, index) => {
+        if (tipKeys[index]) {
+          const title = card.querySelector('h6');
+          const desc = card.querySelector('p');
+          if (title) title.textContent = t(tipKeys[index].title);
+          if (desc) desc.textContent = t(tipKeys[index].desc);
+        }
+      });
+
+      // Update info banner
+      const infoBannerTitle = document.querySelector('.info-banner h6');
+      const infoBannerDesc = document.querySelector('.info-banner p');
+      if (infoBannerTitle) infoBannerTitle.textContent = t('howToRead');
+      if (infoBannerDesc) infoBannerDesc.textContent = t('howToReadDesc');
+    }
+
     // Language switcher
     function switchLanguage(lang) {
       currentLang = lang;
       updateLanguage();
 
+      // Update language switcher buttons
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
       });
@@ -115,6 +246,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       updateLanguage();
 
+      // Set active language button
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.remove('active');
       });
@@ -128,10 +260,72 @@
   <link rel="stylesheet" href="style.css">
   <script src="config.js"></script>
   <script>
+    // Global API helper function
     function apiUrl(endpoint) {
       return `${window.APP_CONFIG.API_BASE_URL}${endpoint}`;
     }
   </script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    /* Language Switcher Styles */
+    .language-switcher {
+      display: flex;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      padding: 4px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .lang-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Mobile responsive for language switcher */
+    @media (max-width: 768px) {
+      .language-switcher {
+        margin-bottom: 1rem;
+      }
+
+      .lang-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -149,7 +343,7 @@
             🇺🇸 English
           </button>
           <button class="lang-btn" data-lang="my" onclick="switchLanguage('my')">
-            🇲🇲 မြန်မာ
+            �🇲 မြmန်မာ
           </button>
         </div>
       </div>
@@ -193,11 +387,28 @@
 
         <div class="row align-items-center">
           <div class="col-lg-8 col-md-12">
-            <div class="input-group">
+            <!-- Desktop Layout -->
+            <div class="input-group d-none d-md-flex">
               <span class="input-group-text" style="background: var(--white); border-color: var(--neutral-300);">
                 <i class="bi bi-person-fill text-primary"></i>
               </span>
               <input type="text" id="username" placeholder="Enter your username" class="form-control">
+              <button id="submitPrediction" class="btn-gaming pulse-animation" disabled>
+                <i class="bi bi-send me-1"></i> Submit Prediction
+              </button>
+            </div>
+            
+            <!-- Mobile Layout -->
+            <div class="d-md-none mobile-prediction-form">
+              <div class="input-group mb-3">
+                <span class="input-group-text" style="background: var(--white); border-color: var(--neutral-300);">
+                  <i class="bi bi-person-fill text-primary"></i>
+                </span>
+                <input type="text" id="usernameMobile" placeholder="Enter your username" class="form-control">
+              </div>
+              <button id="submitPredictionMobile" class="btn-gaming pulse-animation w-100" disabled>
+                <i class="bi bi-send me-1"></i> Submit Prediction
+              </button>
             </div>
           </div>
           <div class="col-lg-4 col-md-12 mt-3 mt-lg-0">
@@ -231,6 +442,25 @@
     <div id="ticketInfo" class="mt-4"></div>
   </div>
 
+  <!-- Ticket Modal -->
+  <div id="ticketModal" class="ticket-modal">
+    <div class="ticket-modal-content">
+      <div class="ticket-header">
+        <h4><i class="bi bi-ticket-perforated-fill me-2"></i>Your Prediction Ticket</h4>
+        <span class="close-modal" id="closeModal">&times;</span>
+      </div>
+      <div class="ticket-body" id="ticketModalContent">
+        <!-- Content will be dynamically filled -->
+      </div>
+      <div class="ticket-footer">
+        <button class="btn btn-primary" id="closeModalBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti container for animations -->
+  <div id="confettiContainer"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // Load matches when page loads
@@ -242,11 +472,53 @@
       window.location.href = 'admin.html';
     });
 
+    // Sync mobile and desktop inputs
+    function syncInputs(sourceId, targetId) {
+      const source = document.getElementById(sourceId);
+      const target = document.getElementById(targetId);
+      if (source && target) {
+        source.addEventListener('input', (e) => {
+          target.value = e.target.value;
+          // Update both submit buttons
+          const desktopBtn = document.getElementById('submitPrediction');
+          const mobileBtn = document.getElementById('submitPredictionMobile');
+          if (desktopBtn) desktopBtn.disabled = !e.target.value;
+          if (mobileBtn) mobileBtn.disabled = !e.target.value;
+        });
+      }
+    }
+
+    // Initialize input syncing when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      syncInputs('username', 'usernameMobile');
+      syncInputs('usernameMobile', 'username');
+      
+      // Add event listeners for both submit buttons
+      const desktopBtn = document.getElementById('submitPrediction');
+      const mobileBtn = document.getElementById('submitPredictionMobile');
+      
+      if (desktopBtn) {
+        desktopBtn.addEventListener('click', handleSubmitPrediction);
+      }
+      if (mobileBtn) {
+        mobileBtn.addEventListener('click', handleSubmitPrediction);
+      }
+    });
+
     // Check user status when username is entered
     document.getElementById('username').addEventListener('input', async (e) => {
       const username = e.target.value;
+      document.getElementById('submitPrediction').disabled = !username;
+      if (document.getElementById('submitPredictionMobile')) {
+        document.getElementById('submitPredictionMobile').disabled = !username;
+      }
 
       if (username) {
+        // Sync with mobile input
+        const mobileInput = document.getElementById('usernameMobile');
+        if (mobileInput) mobileInput.value = username;
+        
+        // Check if user already exists
         try {
           const userResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/user-predictions/${username}`);
           if (userResponse.ok) {
@@ -260,6 +532,24 @@
                   <p>Contact admin to reset your predictions if needed.</p>
                 </div>
               `;
+              document.getElementById('submitPrediction').disabled = true;
+              if (document.getElementById('submitPredictionMobile')) {
+                document.getElementById('submitPredictionMobile').disabled = true;
+              }
+
+              // Show user's predictions
+              let predictionsHtml = '<h5>Your Predictions:</h5><ul>';
+              user.predictions.forEach(pred => {
+                predictionsHtml += `<li>Match ${pred.matchId}: ${pred.guessA}-${pred.guessB} (${pred.selectedTeam})</li>`;
+              });
+              predictionsHtml += '</ul>';
+
+              document.getElementById('ticketInfo').innerHTML = `
+                <div class="alert alert-info">
+                  ${predictionsHtml}
+                </div>
+              `;
+
               return;
             }
           }
@@ -267,18 +557,138 @@
           console.log('User not found, can proceed with prediction');
         }
 
+        // Always load matches for new users
         await loadMatches();
       }
     });
 
+    // Add event listener for mobile username input
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileInput = document.getElementById('usernameMobile');
+      if (mobileInput) {
+        mobileInput.addEventListener('input', async (e) => {
+          const username = e.target.value;
+          const desktopInput = document.getElementById('username');
+          if (desktopInput) desktopInput.value = username;
+          
+          document.getElementById('submitPrediction').disabled = !username;
+          if (document.getElementById('submitPredictionMobile')) {
+            document.getElementById('submitPredictionMobile').disabled = !username;
+          }
+
+          if (username) {
+            // Check if user already exists (same logic as desktop)
+            try {
+              const userResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/user-predictions/${username}`);
+              if (userResponse.ok) {
+                const user = await userResponse.json();
+                if (user && user.predictions && user.predictions.length > 0) {
+                  document.getElementById('matchList').innerHTML = `
+                    <div class="alert alert-warning">
+                      <h5>User "${username}" has already made predictions!</h5>
+                      <p>Ticket ID: ${user.ticketId}</p>
+                      <p>Status: ${user.status || 'pending'}</p>
+                      <p>Contact admin to reset your predictions if needed.</p>
+                    </div>
+                  `;
+                  document.getElementById('submitPrediction').disabled = true;
+                  if (document.getElementById('submitPredictionMobile')) {
+                    document.getElementById('submitPredictionMobile').disabled = true;
+                  }
+                  return;
+                }
+              }
+            } catch (error) {
+              console.log('User not found, can proceed with prediction');
+            }
+
+            // Always load matches for new users
+            await loadMatches();
+          }
+        });
+      }
+    });
+
+    // Handle submit prediction function
+    function handleSubmitPrediction() {
+      const username = document.getElementById('username').value || document.getElementById('usernameMobile').value;
+      if (!username) {
+        alert(t('enterUsernameAlert'));
+        return;
+      }
+
+      // Get selected predictions
+      const selectedPredictions = [];
+      document.querySelectorAll('.team-select.active').forEach(btn => {
+        const matchId = btn.dataset.matchId;
+        const teamName = btn.dataset.teamName;
+        const team = btn.dataset.team;
+        selectedPredictions.push({
+          matchId: matchId,
+          selectedTeam: teamName,
+          team: team
+        });
+      });
+
+      if (selectedPredictions.length < 4) {
+        alert(t('selectTeamsAlert'));
+        return;
+      }
+
+      // Submit predictions
+      submitPredictions(username, selectedPredictions);
+    }
+
+    // Submit predictions to backend
+    async function submitPredictions(username, predictions) {
+      try {
+        const response = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/submit-prediction`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            username: username,
+            predictions: predictions
+          })
+        });
+
+        if (response.ok) {
+          const result = await response.json();
+          alert(t('predictionSubmitted') + '\n' + t('ticketId') + ': ' + result.ticketId);
+          
+          // Show ticket info
+          document.getElementById('viewTicketBtn').style.display = 'inline-block';
+          
+          // Disable further submissions
+          document.getElementById('submitPrediction').disabled = true;
+          if (document.getElementById('submitPredictionMobile')) {
+            document.getElementById('submitPredictionMobile').disabled = true;
+          }
+        } else {
+          const error = await response.json();
+          if (error.message && error.message.includes('already submitted')) {
+            alert(t('usernameExists'));
+          } else {
+            alert(t('predictionFailed') + '\n' + (error.message || 'Unknown error'));
+          }
+        }
+      } catch (error) {
+        console.error('Error submitting prediction:', error);
+        alert(t('predictionFailed') + '\n' + error.message);
+      }
+    }
+
     async function loadMatches() {
       try {
+        // First try to get all matches
         const response = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/all-matches`);
         const matches = await response.json();
 
         if (matches && matches.length > 0) {
           displayMatches(matches);
         } else {
+          // If no matches found, try with specific sportKey
           const sportKeyResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/matches/soccer_uefa_champs_league_qualification`);
           const sportKeyMatches = await sportKeyResponse.json();
 
@@ -317,9 +727,18 @@
         return;
       }
 
-      // Create filter section
+      // Create filter section at the top
       const filterDiv = document.createElement('div');
       filterDiv.className = 'card mb-4 p-3';
+      matchList.appendChild(filterDiv);
+
+      // Create matches container
+      const matchesDiv = document.createElement('div');
+      matchesDiv.id = 'matches';
+      matchesDiv.className = 'mt-3';
+      matchList.appendChild(matchesDiv);
+
+      // Add filter controls to the filter div
       filterDiv.innerHTML = `
         <h5 class="mb-3"><i class="bi bi-funnel-fill me-2"></i>Filter Matches</h5>
         <div class="row">
@@ -330,8 +749,8 @@
             <select id="filterSportKey" class="form-control form-control-sm mb-2">
               <option value="">All Leagues</option>
               ${[...new Set(matches.map(m => m.sportKey))].map(key =>
-                `<option value="${key}">${formatLeagueName(key)}</option>`
-              ).join('')}
+        `<option value="${key}">${formatLeagueName(key)}</option>`
+      ).join('')}
             </select>
           </div>
           <div class="col-md-4">
@@ -345,13 +764,8 @@
           <p class="mb-0"><strong>Selected:</strong> <span id="selectedCount">0</span>/4 required</p>
         </div>
       `;
-      matchList.appendChild(filterDiv);
 
-      // Create matches container
-      const matchesDiv = document.createElement('div');
-      matchesDiv.id = 'matches';
-      matchesDiv.className = 'mt-3';
-      matchList.appendChild(matchesDiv);
+      // No need to create another matches container here as we already created one inside matchesCol
 
       // Display all matches
       displayFilteredMatches(matches);
@@ -379,6 +793,7 @@
       });
     }
 
+    // Function to convert league names to proper display format
     function formatLeagueName(sportKey) {
       const leagueMap = {
         'soccer_china_superleague': 'China Super League',
@@ -389,7 +804,13 @@
         'soccer_france_ligue_one': 'France Ligue 1',
         'soccer_uefa_champs_league': 'UEFA Champions League',
         'soccer_uefa_champs_league_qualification': 'UEFA Champions League Qualification',
-        'soccer_uefa_europa_league': 'UEFA Europa League'
+        'soccer_uefa_europa_league': 'UEFA Europa League',
+        'soccer_brazil_serie_a': 'Brazil Serie A',
+        'soccer_argentina_primera_division': 'Argentina Primera Division',
+        'soccer_netherlands_eredivisie': 'Netherlands Eredivisie',
+        'soccer_portugal_primeira_liga': 'Portugal Primeira Liga',
+        'soccer_russia_premier_league': 'Russia Premier League',
+        'soccer_turkey_super_league': 'Turkey Super League'
       };
 
       return leagueMap[sportKey] || sportKey.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
@@ -408,7 +829,9 @@
         return;
       }
 
-      // Group matches by league
+      // First display all matches, then add tips at the bottom
+
+      // Group matches by league/sportKey for better organization
       const matchesByLeague = {};
       matches.forEach(match => {
         const league = match.sportKey || 'Unknown League';
@@ -426,102 +849,153 @@
         leagueDiv.innerHTML = `<div class="league-header"><i class="bi bi-trophy-fill me-2"></i>${formattedLeagueName}</div>`;
         matchesDiv.appendChild(leagueDiv);
 
-        matchesByLeague[league].forEach((match) => {
+        matchesByLeague[league].forEach((match, index) => {
           const div = document.createElement('div');
           div.className = 'match-card';
           div.id = `match_${match.matchId}`;
           div.dataset.matchId = match.matchId;
+          div.dataset.sportKey = match.sportKey;
 
+          // Calculate odds display - if odds are available
+          const oddsADisplay = match.oddsA ? `${match.oddsA.toFixed(2)}` : '';
+          const oddsBDisplay = match.oddsB ? `${match.oddsB.toFixed(2)}` : '';
+          const drawOddsDisplay = match.drawOdds ? `${match.drawOdds.toFixed(2)}` : '';
+
+          // Determine which team is favored (has lower odds)
           const teamAFavored = match.oddsA && match.oddsB && match.oddsA < match.oddsB;
           const teamBFavored = match.oddsA && match.oddsB && match.oddsB < match.oddsA;
 
           div.innerHTML = `
-            <h3 class="match-title">
-              <span class="home-team">${match.teamA}</span>
-              <span class="team-label">(Home)</span>
-              <span class="vs-text">vs</span>
-              <span class="away-team">${match.teamB}</span>
-              <span class="team-label">(Away)</span>
-            </h3>
-            
-            <div class="team-select-container">
-              <button type="button" class="btn btn-outline-primary team-select ${teamAFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamA" data-team-name="${match.teamA}">
-                <span class="team-name ${teamAFavored ? 'favored' : ''}">${match.teamA}</span>
-                ${match.oddsA ? `<span class="odds">${match.oddsA.toFixed(2)}</span>` : ''}
-              </button>
-              <button type="button" class="btn btn-outline-secondary team-select draw-select" data-match-id="${match.matchId}" data-team="draw" data-team-name="Draw">
-                <span class="team-name">Draw</span>
-                ${match.drawOdds ? `<span class="odds">${match.drawOdds.toFixed(2)}</span>` : ''}
-              </button>
-              <button type="button" class="btn btn-outline-primary team-select ${teamBFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamB" data-team-name="${match.teamB}">
-                <span class="team-name ${teamBFavored ? 'favored' : ''}">${match.teamB}</span>
-                ${match.oddsB ? `<span class="odds">${match.oddsB.toFixed(2)}</span>` : ''}
-              </button>
-            </div>
-            
-            <div class="selected-team-display" id="selected_${match.matchId}" style="display: none;">
-              <div class="alert alert-success mb-0">
-                Your prediction: <span class="selected-team-name"></span>
+              <h3 class="match-title">
+                <span class="home-team">${match.teamA}</span>
+                <span class="team-label">(Home)</span>
+                <span class="vs-text">vs</span>
+                <span class="away-team">${match.teamB}</span>
+                <span class="team-label">(Away)</span>
+              </h3>
+              <input type="hidden" value="${match.matchId}">
+              
+              <div class="team-select-container">
+                <button type="button" class="btn btn-outline-primary team-select ${teamAFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamA" data-team-name="${match.teamA}">
+                  <span class="team-name ${teamAFavored ? 'favored' : ''}">${match.teamA}</span>
+                  ${match.oddsA ? `<span class="odds">${match.oddsA.toFixed(2)}</span>` : ''}
+                </button>
+                <button type="button" class="btn btn-outline-secondary team-select draw-select" data-match-id="${match.matchId}" data-team="draw" data-team-name="Draw">
+                  <span class="team-name">Draw</span>
+                  ${match.drawOdds ? `<span class="odds">${match.drawOdds.toFixed(2)}</span>` : ''}
+                </button>
+                <button type="button" class="btn btn-outline-primary team-select ${teamBFavored ? 'favored-team' : ''}" data-match-id="${match.matchId}" data-team="teamB" data-team-name="${match.teamB}">
+                  <span class="team-name ${teamBFavored ? 'favored' : ''}">${match.teamB}</span>
+                  ${match.oddsB ? `<span class="odds">${match.oddsB.toFixed(2)}</span>` : ''}
+                </button>
+              </div>
+              
+              <div class="selected-team-display" id="selected_${match.matchId}" style="display: none;">
+                <div class="alert alert-success mb-0">
+                  Your prediction: <span class="selected-team-name"></span>
+                </div>
               </div>
             </div>
           `;
-
           leagueDiv.appendChild(div);
         });
       });
 
-      // Add submit button section at the bottom
-      const submitSection = document.createElement('div');
-      submitSection.className = 'submit-section mt-4 p-4';
-      submitSection.innerHTML = `
-        <div class="text-center">
-          <div class="alert alert-info mb-3">
-            <strong>Selected:</strong> <span id="selectedCount">0</span>/4 required
+      // Add pro tips section at the bottom
+      const tipsDiv = document.createElement('div');
+      tipsDiv.className = 'mt-5 mb-4';
+      tipsDiv.innerHTML = `
+        <div class="prediction-tips">
+          <div class="text-center mb-4">
+            <h4 style="color: var(--neutral-800); font-weight: 600; margin-bottom: 0.5rem;">
+              <i class="bi bi-lightbulb me-2 text-primary"></i>Prediction Tips
+            </h4>
+            <p style="color: var(--neutral-600); margin: 0;">Learn the strategies to make better predictions</p>
           </div>
-          <button id="submitPrediction" class="btn-gaming pulse-animation btn-lg" disabled>
-            <i class="bi bi-send me-2"></i> Submit Prediction
-          </button>
-          <div class="mt-2">
-            <small class="text-muted">Please select at least 4 teams to submit your prediction.</small>
+          
+          <div class="row">
+            <div class="col-md-3">
+              <div class="tip-card">
+                <i class="bi bi-lightbulb-fill text-warning"></i>
+                <h6>Understanding Odds</h6>
+                <p>Lower odds mean higher chance of winning</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="tip-card">
+                <i class="bi bi-house-fill text-success"></i>
+                <h6>Home Advantage</h6>
+                <p>Home teams typically perform 10-15% better</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="tip-card">
+                <i class="bi bi-graph-up text-primary"></i>
+                <h6>Smart Strategy</h6>
+                <p>Balance safe bets with higher-risk picks</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="tip-card">
+                <i class="bi bi-trophy-fill text-danger"></i>
+                <h6>Requirement</h6>
+                <p>Select exactly 4 matches to submit</p>
+              </div>
+            </div>
           </div>
-          <!-- Validation Messages -->
-          <div id="validationMessages" class="mt-3" style="display: none;">
-            <div class="alert alert-warning" role="alert">
-              <i class="bi bi-exclamation-triangle-fill me-2"></i>
-              <span id="validationText"></span>
+          
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="info-banner">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-info-circle-fill text-primary me-3"></i>
+                  <div>
+                    <h6 class="mb-1">How to Read the Interface</h6>
+                    <p class="mb-0">Teams in <strong style="color: var(--primary-blue);">blue</strong> are favorites (lower odds, higher win chance). Green numbers show the betting odds.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       `;
-      matchesDiv.appendChild(submitSection);
+      matchesDiv.appendChild(tipsDiv);
 
-      // Add event listener to submit button
-      const submitBtn = document.getElementById('submitPrediction');
-      if (submitBtn) {
-        submitBtn.addEventListener('click', handleSubmitPrediction);
-      }
-
-      // Add team selection event listeners
+      // Add event listeners for team selection buttons
       document.querySelectorAll('.team-select').forEach(button => {
-        button.addEventListener('click', (e) => {
-          const matchId = e.currentTarget.dataset.matchId;
-          const team = e.currentTarget.dataset.team;
-          const teamName = e.currentTarget.dataset.teamName;
+        button.addEventListener('click', function () {
+          const matchId = this.dataset.matchId;
+          const team = this.dataset.team;
+          const teamName = this.dataset.teamName;
 
           // Remove active class from all buttons in this match
-          document.querySelectorAll(`[data-match-id="${matchId}"]`).forEach(btn => {
+          document.querySelectorAll(`.team-select[data-match-id="${matchId}"]`).forEach(btn => {
             btn.classList.remove('active');
+            btn.classList.remove('btn-primary', 'btn-secondary');
+
+            if (btn.dataset.team === 'teamA' || btn.dataset.team === 'teamB') {
+              btn.classList.add('btn-outline-primary');
+            } else {
+              btn.classList.add('btn-outline-secondary');
+            }
           });
 
-          // Add active class to clicked button
-          e.currentTarget.classList.add('active');
+          // Add active class to selected button
+          this.classList.add('active');
+          this.classList.remove('btn-outline-primary', 'btn-outline-secondary');
 
-          // Show selected team
+          if (team === 'teamA' || team === 'teamB') {
+            this.classList.add('btn-primary');
+          } else {
+            this.classList.add('btn-secondary');
+          }
+
+          // Show selected team display
           const selectedDisplay = document.getElementById(`selected_${matchId}`);
           selectedDisplay.style.display = 'block';
           selectedDisplay.querySelector('.selected-team-name').textContent = teamName;
 
-          // Store the selection
+          // Store the selection in a hidden field
           let hiddenField = document.getElementById(`prediction_${matchId}`);
           if (!hiddenField) {
             hiddenField = document.createElement('input');
@@ -533,72 +1007,13 @@
           hiddenField.value = team;
           hiddenField.dataset.teamName = teamName;
 
+          // Update selected count
           updateSelectedCount();
         });
       });
     }
 
-    function handleSubmitPrediction() {
-      const username = document.getElementById('username').value.trim();
-      const selectedCount = document.querySelectorAll('.match-prediction').length;
-
-      // Enhanced validation with visual feedback
-      if (!username) {
-        showValidationMessage('⚠️ Please enter your username first!', 'warning');
-        document.getElementById('username').focus();
-        document.getElementById('username').style.borderColor = '#dc3545';
-        setTimeout(() => {
-          document.getElementById('username').style.borderColor = '';
-        }, 3000);
-        return;
-      }
-
-      if (selectedCount < 4) {
-        const remaining = 4 - selectedCount;
-        showValidationMessage(`⚽ Please select ${remaining} more match${remaining > 1 ? 'es' : ''} to complete your prediction!`, 'info');
-        return;
-      }
-
-      // Get selected predictions
-      const selectedPredictions = [];
-      document.querySelectorAll('.team-select.active').forEach(btn => {
-        const matchId = btn.dataset.matchId;
-        const teamName = btn.dataset.teamName;
-        const team = btn.dataset.team;
-        selectedPredictions.push({
-          matchId: matchId,
-          selectedTeam: teamName,
-          team: team
-        });
-      });
-
-      // Show loading state
-      showValidationMessage('🔄 Submitting your predictions...', 'info');
-      const submitBtn = document.getElementById('submitPrediction');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i> Submitting...';
-
-      submitPredictions(username, selectedPredictions);
-    }
-
-    function showValidationMessage(message, type = 'warning') {
-      const validationDiv = document.getElementById('validationMessages');
-      const validationAlert = validationDiv.querySelector('.alert');
-      const validationText = document.getElementById('validationText');
-
-      validationAlert.className = `alert alert-${type}`;
-      validationText.textContent = message;
-      validationDiv.style.display = 'block';
-
-      if (type !== 'danger') {
-        setTimeout(() => {
-          validationDiv.style.display = 'none';
-        }, 5000);
-      }
-
-      validationDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
+    // Function to update the count of selected matches
     function updateSelectedCount() {
       const selectedCount = document.querySelectorAll('.match-prediction').length;
       const countElement = document.getElementById('selectedCount');
@@ -606,67 +1021,336 @@
         countElement.textContent = selectedCount;
       }
 
+      // Enable or disable submit button based on selection count
       const submitButton = document.getElementById('submitPrediction');
       if (submitButton) {
-        const username = document.getElementById('username').value.trim();
-        submitButton.disabled = selectedCount < 4 || !username;
-        
-        const icon = submitButton.querySelector('i');
-        if (selectedCount >= 4 && username) {
-          submitButton.innerHTML = `${icon ? icon.outerHTML : ''} Submit Prediction (${selectedCount} Selected)`;
-          submitButton.classList.add('pulse-animation');
-        } else {
-          submitButton.innerHTML = `${icon ? icon.outerHTML : ''} Submit Prediction (${selectedCount}/4)`;
-          submitButton.classList.remove('pulse-animation');
-        }
+        submitButton.disabled = selectedCount < 4 || !document.getElementById('username').value;
       }
     }
 
-    async function submitPredictions(username, predictions) {
+    document.getElementById('submitPrediction').addEventListener('click', async () => {
+      const username = document.getElementById('username').value;
+      if (!username) {
+        alert('Please enter a username');
+        return;
+      }
+
+      // Check if user already exists
       try {
-        const response = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/submit-prediction`, {
+        const checkUserResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/user-predictions/${username}`);
+        if (checkUserResponse.ok) {
+          const userData = await checkUserResponse.json();
+          if (userData && userData.predictions && userData.predictions.length > 0) {
+            alert('This username has already submitted predictions. Please use a different username or contact admin to reset.');
+            return;
+          }
+        }
+      } catch (error) {
+        // User doesn't exist, can proceed
+      }
+
+      // Get all selected predictions
+      const predictionElements = document.querySelectorAll('.match-prediction');
+      if (predictionElements.length === 0) {
+        alert('No predictions made. Please select at least 4 teams.');
+        return;
+      }
+
+      if (predictionElements.length < 4) {
+        alert('Please select at least 4 teams to submit your prediction.');
+        return;
+      }
+
+      const predictions = [];
+
+      predictionElements.forEach((element) => {
+        const matchId = element.id.replace('prediction_', '');
+        const selectedTeam = element.value; // teamA, teamB, or draw
+
+        // For API compatibility, we need to set guessA and guessB values
+        // that correspond to the selected team
+        let guessA = 0;
+        let guessB = 0;
+
+        if (selectedTeam === 'teamA') {
+          guessA = 1;
+          guessB = 0;
+        } else if (selectedTeam === 'teamB') {
+          guessA = 0;
+          guessB = 1;
+        } else {
+          // Draw
+          guessA = 1;
+          guessB = 1;
+        }
+
+        predictions.push({ matchId, selectedTeam, guessA, guessB });
+      });
+
+      try {
+        document.getElementById('ticketInfo').innerHTML = `
+          <div class="alert alert-info">
+            <h5>Submitting your prediction...</h5>
+            <p>Please wait...</p>
+          </div>
+        `;
+
+        const predictResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/predict`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            username: username,
-            predictions: predictions
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, predictions })
         });
 
-        if (response.ok) {
-          const result = await response.json();
-          showValidationMessage(`🎉 Prediction submitted successfully! Ticket ID: ${result.ticketId}`, 'success');
-          
-          document.getElementById('viewTicketBtn').style.display = 'inline-block';
-          document.getElementById('submitPrediction').disabled = true;
-          document.getElementById('submitPrediction').innerHTML = '<i class="bi bi-check-circle me-2"></i> Submitted Successfully!';
-          
-          document.querySelectorAll('.team-select').forEach(btn => {
-            btn.disabled = true;
+        if (predictResponse.ok) {
+          const data = await predictResponse.json();
+
+          // Create a summary of the predictions
+          let predictionSummary = '<h6>Your Predictions:</h6><ul>';
+          predictions.forEach(pred => {
+            const matchCard = document.querySelector(`[data-match-id="${pred.matchId}"]`);
+            const teamA = matchCard.querySelector('[data-team="teamA"]').dataset.teamName;
+            const teamB = matchCard.querySelector('[data-team="teamB"]').dataset.teamName;
+            const selectedTeamName = matchCard.querySelector(`[data-team="${pred.selectedTeam}"]`).dataset.teamName;
+
+            predictionSummary += `<li>${teamA} vs ${teamB}: You predicted <strong>${selectedTeamName}</strong></li>`;
           });
+          predictionSummary += '</ul>';
+
+          document.getElementById('ticketInfo').innerHTML = `
+            <div class="alert alert-success">
+              <h5>Prediction Submitted Successfully!</h5>
+              <p><strong>Ticket ID:</strong> ${data.ticketId}</p>
+              <p>${data.message}</p>
+              ${predictionSummary}
+            </div>
+          `;
+          // Disable the submit button after successful submission
+          document.getElementById('submitPrediction').disabled = true;
         } else {
-          const error = await response.json();
-          if (error.message && error.message.includes('already submitted')) {
-            showValidationMessage('❌ This username has already submitted predictions. Please use a different username or contact admin to reset.', 'danger');
-          } else {
-            showValidationMessage(`❌ Submission failed: ${error.message || 'Unknown error'}`, 'danger');
-          }
-          
-          const submitBtn = document.getElementById('submitPrediction');
-          submitBtn.disabled = false;
-          updateSelectedCount();
+          const errorData = await predictResponse.json();
+          document.getElementById('ticketInfo').innerHTML = `
+            <div class="alert alert-danger">
+              <h5>Prediction Failed!</h5>
+              <p>${errorData.message || 'Unknown error occurred'}</p>
+            </div>
+          `;
         }
       } catch (error) {
         console.error('Error submitting prediction:', error);
-        showValidationMessage(`❌ Network error: ${error.message}. Please check your connection and try again.`, 'danger');
-        
-        const submitBtn = document.getElementById('submitPrediction');
-        submitBtn.disabled = false;
-        updateSelectedCount();
+        document.getElementById('ticketInfo').innerHTML = `
+          <div class="alert alert-danger">
+            <h5>Prediction Failed!</h5>
+            <p>An error occurred while submitting your prediction. Please try again.</p>
+          </div>
+        `;
       }
+    });
+
+
+    // Modal functionality
+    const ticketModal = document.getElementById('ticketModal');
+    const closeModal = document.getElementById('closeModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const viewTicketBtn = document.getElementById('viewTicketBtn');
+
+    // Close modal when clicking the X or Close button
+    closeModal.addEventListener('click', () => {
+      ticketModal.style.display = 'none';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      ticketModal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', (event) => {
+      if (event.target === ticketModal) {
+        ticketModal.style.display = 'none';
+      }
+    });
+
+    // Function to show ticket in modal
+    function showTicketModal(ticket, username) {
+      // Determine status class
+      let statusClass = 'status-pending';
+      if (ticket.status === 'win') {
+        statusClass = 'status-win';
+        createConfetti();
+      } else if (ticket.status === 'lose') {
+        statusClass = 'status-lose';
+      }
+
+      // Create ticket content
+      let modalContent = `
+        <div class="mb-4">
+          <h5 class="mb-3">Ticket Information</h5>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <strong>Username:</strong>
+            </div>
+            <div class="col-md-8">
+              ${username}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <strong>Ticket ID:</strong>
+            </div>
+            <div class="col-md-8">
+              <span class="ticket-id">${ticket.ticketId}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <strong>Status:</strong>
+            </div>
+            <div class="col-md-8">
+              <span class="prediction-status ${statusClass}">${ticket.status || 'pending'}</span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <strong>Created:</strong>
+            </div>
+            <div class="col-md-8">
+              ${new Date(ticket.createdAt).toLocaleString()}
+            </div>
+          </div>
+        </div>
+        
+        <h5 class="mb-3">Your Predictions</h5>
+      `;
+
+      // Add predictions
+      ticket.predictions.forEach((pred, index) => {
+        modalContent += `
+          <div class="prediction-item">
+            <div class="row">
+              <div class="col-md-8">
+                <strong>Match ${index + 1}:</strong> ${pred.matchId}
+              </div>
+              <div class="col-md-4 text-end">
+                <span class="badge bg-primary">${pred.selectedTeam}</span>
+              </div>
+            </div>
+            <div class="small text-muted mt-1">
+              Prediction: ${pred.selectedTeam === 'teamA' ? 'Home Win' : pred.selectedTeam === 'teamB' ? 'Away Win' : 'Draw'}
+              (${pred.guessA}-${pred.guessB})
+            </div>
+          </div>
+        `;
+      });
+
+      // Set modal content and show
+      document.getElementById('ticketModalContent').innerHTML = modalContent;
+      ticketModal.style.display = 'block';
     }
+
+    // Create confetti animation for winning tickets
+    function createConfetti() {
+      const confettiContainer = document.getElementById('confettiContainer');
+      confettiContainer.innerHTML = '';
+
+      const colors = ['#1a73e8', '#fbbc05', '#34a853', '#ea4335', '#4285f4'];
+
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDelay = Math.random() * 5 + 's';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.width = Math.random() * 10 + 5 + 'px';
+        confetti.style.height = Math.random() * 10 + 5 + 'px';
+        confettiContainer.appendChild(confetti);
+      }
+
+      // Remove confetti after animation
+      setTimeout(() => {
+        confettiContainer.innerHTML = '';
+      }, 10000);
+    }
+
+    // Check ticket status periodically
+    setInterval(async () => {
+      const username = document.getElementById('username').value;
+      if (username) {
+        try {
+          const userResponse = await fetch(`http://localhost:3000/api/user-predictions/${username}`);
+          if (userResponse.ok) {
+            const user = await userResponse.json();
+            if (user && user.ticketId) {
+              // Show view ticket button
+              viewTicketBtn.style.display = 'block';
+
+              const ticketResponse = await fetch(`${window.APP_CONFIG.API_BASE_URL}/api/ticket/${user.ticketId}`);
+              if (ticketResponse.ok) {
+                const ticket = await ticketResponse.json();
+
+                // Store ticket data for modal
+                viewTicketBtn.dataset.ticketData = JSON.stringify(ticket);
+                viewTicketBtn.dataset.username = username;
+
+                // Add click event to view ticket button
+                viewTicketBtn.onclick = function () {
+                  const ticketData = JSON.parse(this.dataset.ticketData);
+                  const username = this.dataset.username;
+                  showTicketModal(ticketData, username);
+                };
+
+                if (ticket.status) {
+                  // Determine status class for the alert
+                  let statusClass = 'alert-info';
+                  if (ticket.status === 'win') {
+                    statusClass = 'alert-success';
+                  } else if (ticket.status === 'lose') {
+                    statusClass = 'alert-danger';
+                  }
+
+                  let ticketHtml = `
+                    <div class="card shadow animate-fadeIn">
+                      <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-ticket-perforated-fill me-2"></i>Your Prediction Status</h5>
+                      </div>
+                      <div class="card-body">
+                        <div class="row mb-3">
+                          <div class="col-md-4">
+                            <strong>Ticket ID:</strong>
+                          </div>
+                          <div class="col-md-8">
+                            <span class="ticket-id">${ticket.ticketId}</span>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <div class="col-md-4">
+                            <strong>Status:</strong>
+                          </div>
+                          <div class="col-md-8">
+                            <span class="prediction-status ${ticket.status === 'win' ? 'status-win' : ticket.status === 'lose' ? 'status-lose' : 'status-pending'}">
+                              ${ticket.status}
+                            </span>
+                          </div>
+                        </div>
+                        <div class="mt-3">
+                          <button class="btn btn-outline-primary btn-sm" onclick="document.getElementById('viewTicketBtn').click()">
+                            <i class="bi bi-eye-fill me-1"></i> View Full Ticket Details
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  `;
+                  document.getElementById('ticketInfo').innerHTML = ticketHtml;
+                }
+              }
+            }
+          }
+        } catch (error) {
+          console.error('Error checking ticket status:', error);
+        }
+      }
+    }, 5000);
   </script>
+
+  <script src="config.js"></script>
 </body>
+
 </html>
