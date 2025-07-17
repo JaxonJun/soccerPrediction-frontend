@@ -620,6 +620,22 @@ nd Away team labels */
   line-height: 1.4;
 }
 
+/* Mobile Prediction Form Styles */
+.mobile-prediction-form {
+  padding: 0;
+}
+
+.mobile-prediction-form .input-group {
+  margin-bottom: 1rem;
+}
+
+.mobile-prediction-form .btn-gaming {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
 /* Mobile adjustments for tips */
 @media (max-width: 768px) {
   .prediction-tips {
@@ -645,6 +661,37 @@ nd Away team labels */
   
   .team-label {
     font-size: 0.7rem;
+  }
+
+  /* Mobile-specific adjustments for the prediction form */
+  .mobile-prediction-form .btn-gaming {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+
+  .mobile-prediction-form .input-group-text {
+    padding: 12px 16px;
+  }
+
+  .mobile-prediction-form .form-control {
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  /* Better spacing for mobile */
+  .col-lg-4.col-md-12.mt-3.mt-lg-0 {
+    margin-top: 1.5rem !important;
+  }
+
+  /* Center the stats on mobile */
+  .stat-card {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(37, 99, 235, 0.05);
+    border: 1px solid rgba(37, 99, 235, 0.1);
   }
 }
 * Info banner styling */
