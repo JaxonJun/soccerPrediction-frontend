@@ -1099,7 +1099,7 @@
       const username = document.getElementById('username').value;
       if (username) {
         try {
-          const userResponse = await fetch(`http://localhost:3000/api/user-predictions/${username}`);
+          const userResponse = await fetch(`https://soccerprediction-backend.onrender.com/api/user-predictions/${username}`);
           if (userResponse.ok) {
             const user = await userResponse.json();
             if (user && user.ticketId) {
